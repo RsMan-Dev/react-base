@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import { Redirect } from "react-router-dom";
-import {MDBCol, MDBContainer, MDBRow} from "mdbreact";
-import {checkToken} from "../../utils/auth";
+import {check} from "../../utils/auth";
 
 export default class AuthMiddleware extends Component {
     state = {
@@ -10,11 +9,9 @@ export default class AuthMiddleware extends Component {
     }
 
     componentDidMount() {
-        checkToken((data) => {
-            if(data.message && data.message === "valid"){
-                this.setState({checking: false, redirect: false})
-            }
-        }, (data)=>{
+        check(() => {
+            this.setState({checking: false, redirect: false})
+        }, ()=>{
             this.setState({checking: false, redirect: true})
         });
     }
@@ -28,13 +25,7 @@ export default class AuthMiddleware extends Component {
             }
         } else{
             return (
-                <MDBContainer className={'h-100'}>
-                    <MDBRow center className={'h-100'}>
-                        <MDBCol middle={true} sm="8" className="text-center">
-                            <h1>Checking connection</h1>
-                        </MDBCol>
-                    </MDBRow>
-                </MDBContainer>
+                <h1>Checking connection</h1>
             );
         }
     }

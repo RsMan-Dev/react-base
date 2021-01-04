@@ -3,8 +3,8 @@ import {Redirect} from 'react-router-dom';
 
 import Login from "../pages/guest/login";
 
-import Logout from "../pages/auth/logout";
 import Home from "../pages/auth/home/home";
+import Logout from "../pages/auth/logout";
 
 const guestRoutes= [
     {path: "/login", component: <Login />},

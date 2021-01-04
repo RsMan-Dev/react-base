@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import {MDBCol, MDBContainer, MDBRow} from "mdbreact";
 import {Redirect} from 'react-router-dom';
 import {logout} from "../../utils/auth";
 
@@ -11,8 +10,6 @@ class Logout extends Component {
     componentDidMount() {
         logout((data) => {
             this.setState({redirect: true})
-        }, (data)=>{
-            this.setState({redirect: true})
         });
     }
 
@@ -21,13 +18,7 @@ class Logout extends Component {
             return ( <Redirect to={'/'}/> );
         }
         return (
-            <MDBContainer className={'h-100'}>
-                <MDBRow center className={'h-100'}>
-                    <MDBCol middle={true} sm="8" className="text-center">
-                        <h1>Logging out</h1>
-                    </MDBCol>
-                </MDBRow>
-            </MDBContainer>
+            <h1>Logging out</h1>
         );
     }
 }
